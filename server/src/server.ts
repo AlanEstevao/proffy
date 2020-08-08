@@ -1,8 +1,12 @@
 import express from 'express';
+import cors from 'cors';
+import routes from './routes';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
+app.use(routes);
 
 // Rota - http://localhost:9999/users
 // Recurso - /users
@@ -20,10 +24,5 @@ app.use(express.json());
 // Query Params: Paginação, filtro, ordenação em listagem pelo GET
 // Ex.: /users?page=2&sort=name
 
-app.get('/', (request, response) => {
-  return response.json({
-    message: "Hello World!",
-  });
-});
 
 app.listen(9999);
